@@ -7,7 +7,7 @@ using SQLite;
 
 namespace C971_Reserve.Schemas
 {
-    public class Terms
+    public class Term
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }

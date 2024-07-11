@@ -13,9 +13,9 @@ namespace C971_Reserve.Views
     public class TermsViewModel : INotifyPropertyChanged
     {
         private readonly ProjectDatabase _db;
-        private ObservableCollection<Terms> _terms;
+        private ObservableCollection<Term> _terms;
 
-        public ObservableCollection<Terms> Terms
+        public ObservableCollection<Term> Terms
         {
             get => _terms;
             set
@@ -31,14 +31,23 @@ namespace C971_Reserve.Views
             LoadTerms();
         }
 
-        private async void LoadTerms()
+        /// <summary>
+        /// Load terms from the database
+        /// </summary>
+        public async void LoadTerms()
         {
             var terms = await _db.GetTermsAsync();
-            Terms = new ObservableCollection<Terms>(terms);
+            Terms = new ObservableCollection<Term>(terms);
         }
+
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        /// <summary>
+        /// Fires the PropertyChanged event when a property is changed
+        /// </summary>
+        /// <param name="propertyName"></param>
         protected virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

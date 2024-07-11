@@ -15,22 +15,22 @@ namespace C971_Reserve.Services
         public ProjectDatabase(string dbPath)
         {
             _database = new SQLiteAsyncConnection(dbPath);
-            _database.CreateTableAsync<Terms>().Wait();
+            _database.CreateTableAsync<Term>().Wait();
         }
 
-        public Task<List<Schemas.Terms>> GetTermsAsync()
+        public Task<List<Schemas.Term>> GetTermsAsync()
         {
-            return _database.Table<Terms>().ToListAsync();
+            return _database.Table<Term>().ToListAsync();
         }
 
-        public Task<List<Schemas.Terms>> GetTermAsync(int id)
+        public Task<List<Schemas.Term>> GetTermAsync(int id)
         {
-            return _database.Table<Schemas.Terms>()
+            return _database.Table<Schemas.Term>()
                             .Where(i => i.Id == id)
                             .ToListAsync();
         }
 
-        public Task<int> SaveTermAsync(Terms term)
+        public Task<int> SaveTermAsync(Term term)
         {
             if (term.Id != 0)
             {
@@ -41,7 +41,7 @@ namespace C971_Reserve.Services
                 return _database.InsertAsync(term);
             }
         }
-        public Task<int> DeleteTermAsync(Terms term)
+        public Task<int> DeleteTermAsync(Term term)
         {
             return _database.DeleteAsync(term);
         }

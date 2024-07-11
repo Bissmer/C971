@@ -10,7 +10,7 @@
             <Frame BackgroundColor="Transparent" Padding="0" HasShadow="False" CornerRadius="0">
                 <Grid>
                     <BoxView Color="White" HeightRequest="50"/>
-                    <Label Text ="Terms Management"
+                    <Label Text ="Term Management"
                            VerticalOptions="Center"
                            HorizontalOptions="Center"
                            TextColor="Black"
@@ -19,8 +19,8 @@
                 </Grid>
             </Frame>
 
-            <!--Swipeview -->
-            <Frame Padding="10" Margin="0,10,0,10" CornerRadius="0" BackgroundColor="LightGray">
+            <!--SwipeView -->
+            <Frame Padding="10" Margin="0,10,0,10" CornerRadius="0" BackgroundColor="White">
                 <CollectionView ItemsSource="{Binding Terms}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
@@ -40,7 +40,7 @@
                                         </SwipeItem>
                                     </SwipeItems>
                                 </SwipeView.RightItems>
-                                <Grid Padding="10">
+                                <Grid Padding="10" BackgroundColor="LightGray" Margin="0,0,0,10" >
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto"/>
                                         <RowDefinition Height="Auto"/>
@@ -63,8 +63,10 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-                
             </Frame>
+
+            <!-- Add Term Button -->
+            <Button Text="Add Term" Clicked="OnAddTermButtonClicked" BackgroundColor="#F3B33C" TextColor="White" Margin="10,0,10,0"/>
         </VerticalStackLayout>
     </ScrollView>
 

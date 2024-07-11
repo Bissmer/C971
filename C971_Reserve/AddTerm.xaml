@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="C971_Reserve.AddTerm"
+             Title="AddTerm">
+    <VerticalStackLayout Padding="10">
+        <Label Text="Add New Term" FontSize="Large" HorizontalOptions="Center"/>
+        <Entry x:Name ="TermTitleEntry" Placeholder="Term Title" MaxLength="100"/>
+        <DatePicker x:Name="StartDatePicker"/>
+        <DatePicker x:Name="EndDatePicker"/>
+
+        <Grid Padding="50">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+        
+        <Button Grid.Column="0"
+                Grid.Row="0"
+                Text="Save"
+                HorizontalOptions="Start"
+                Clicked="OnSaveButtonClicked"/>
+        <Button Grid.Column="1"
+                Grid.Row="0"
+                Text="Cancel"
+                HorizontalOptions="End"
+                Clicked="OnCancelButtonClicked"/>
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>

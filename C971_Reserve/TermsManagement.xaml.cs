@@ -20,23 +20,26 @@ namespace C971_Reserve
             BindingContext = _viewModel;
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
 
         private void OnEditSwipeItemInvoked(object sender, EventArgs e)
         {
             var swipeItem = (SwipeItem)sender;
-            var term = (Terms)swipeItem.CommandParameter;
+            var term = (Term)swipeItem.CommandParameter;
         }
 
         private async void OnDeleteSwipeItemInvoked(object sender, EventArgs e)
         {
             var swipeItem = (SwipeItem)sender;
-            var term = (Terms)swipeItem.BindingContext;
+            var term = (Term)swipeItem.BindingContext;
             await _db.DeleteTermAsync(term);
             _viewModel.Terms.Remove(term);
+        }
+
+        private async void OnAddTermButtonClicked(object sender, EventArgs e)
+        {
+            var addTermPage = new AddTerm(_db);
+            await Navigation.PushAsync(addTermPage);
+            addTermPage.Disappearing += (s, args) => _viewModel.LoadTerms();
         }
 
     }
