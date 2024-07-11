@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="C971_Reserve.TermsManagement">
+
+    <ScrollView>
+        <VerticalStackLayout>
+            <!-- Header -->
+
+            <Frame BackgroundColor="Transparent" Padding="0" HasShadow="False" CornerRadius="0">
+                <Grid>
+                    <BoxView Color="White" HeightRequest="50"/>
+                    <Label Text ="Terms Management"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           TextColor="Black"
+                           FontAttributes="Bold"
+                           FontSize="30"/>
+                </Grid>
+            </Frame>
+
+            <!--Swipeview -->
+            <Frame Padding="10" Margin="0,10,0,10" CornerRadius="0" BackgroundColor="LightGray">
+                <CollectionView ItemsSource="{Binding Terms}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <SwipeView>
+                                <SwipeView.LeftItems>
+                                    <SwipeItems>
+                                        <SwipeItem Text="Edit" 
+                                                   BackgroundColor="#F3B33C"
+                                                   Invoked="OnEditSwipeItemInvoked"/>
+                                    </SwipeItems>
+                                </SwipeView.LeftItems>
+                                <SwipeView.RightItems>
+                                    <SwipeItems>
+                                        <SwipeItem Text="Delete" 
+                                                   BackgroundColor="#AF1111"
+                                                   Invoked="OnDeleteSwipeItemInvoked">
+                                        </SwipeItem>
+                                    </SwipeItems>
+                                </SwipeView.RightItems>
+                                <Grid Padding="10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{Binding Title}"
+                                           FontAttributes="Bold"
+                                           Grid.Row="0"
+                                           HorizontalOptions="Start"/>
+                                    <Label Text="{Binding StartDate}"
+                                           Grid.Row="1"
+                                           HorizontalOptions="Start"/>
+                                    <Label Text="{Binding EndDate}"
+                                           Grid.Row="1"
+                                           HorizontalOptions="End"/>
+                                </Grid>
+                            </SwipeView>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
