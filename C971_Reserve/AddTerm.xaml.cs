@@ -13,7 +13,9 @@ public partial class AddTerm : ContentPage
 		InitializeComponent();
 		_db = db;
         _isInitialized = false;
-        NavigationPage.SetHasBackButton(this, false);
+        TermTitleEntry.TextChanged += OnFieldChanged;
+        StartDatePicker.DateSelected += OnFieldChanged;
+        EndDatePicker.DateSelected += OnFieldChanged;
     }
 
 
@@ -21,12 +23,25 @@ public partial class AddTerm : ContentPage
     {
         if (_isInitialized) return;
 
-        if (!_changesMade)
+        if (!_changesMade) //if changes have not been made, enable the save button
         {
             _changesMade = true;
-            SaveButton.IsEnabled = true;
         }
 
+        DateValidation();
+        SaveButton.IsEnabled = _changesMade && !DateValidationLabel.IsVisible; //enable save button if changes have been made and there are no date validation errors
+    }
+
+    private void DateValidation()
+    {
+        if (StartDatePicker.Date > EndDatePicker.Date)
+        {
+            DateValidationLabel.IsVisible = true;
+        }
+        else 
+        {
+            DateValidationLabel.IsVisible = false;
+        }
     }
     private async void OnSaveButtonClicked(object sender, EventArgs e)
     {
@@ -43,14 +58,19 @@ public partial class AddTerm : ContentPage
 
     private async void OnCancelButtonClicked(object sender, EventArgs e)
     {
-        if(_changesMade)
+
+        if (_changesMade)
         {
-            bool confirm = await DisplayAlert("Cancel Confirmation", $"Do you want to discard changes?",
+            bool confirm = await DisplayAlert("Cancel Confirmation", $"Do you want to discard term add?",
                 "Yes", "No");
             if (confirm)
             {
                 await Navigation.PopAsync();
             }
+        }
+        else
+        {
+            await Navigation.PopAsync();
         }
     }
     protected override bool OnBackButtonPressed()

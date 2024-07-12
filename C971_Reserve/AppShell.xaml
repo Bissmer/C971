@@ -11,5 +11,11 @@
     <ShellContent
         ContentTemplate="{DataTemplate local:TermsManagement}"
         Route="TermsManagement" />
+    <ShellContent
+        ContentTemplate="{DataTemplate local:EditTerm}"
+        Route="EditTerm" />
+    <ShellContent
+        ContentTemplate="{DataTemplate local:AddTerm}"
+        Route="AddTerm" />
 
 </Shell>

@@ -17,6 +17,7 @@
         <Entry x:Name ="TermTitleEntry" Placeholder="Term Title" MaxLength="100" Grid.Row="1" TextChanged="OnFieldChanged"/>
         <DatePicker x:Name="StartDatePicker" Grid.Row="2" DateSelected="OnFieldChanged"/>
         <DatePicker x:Name="EndDatePicker" Grid.Row="3" DateSelected="OnFieldChanged"/>
+        <Label x:Name="DateValidationLabel" TextColor="Red" IsVisible="False" Grid.Row="4" Text="Start Date can't be more than End Date"></Label>
         
         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="20" Grid.Row="4" Margin="0,30,0,0">
             <Button 
