@@ -21,24 +21,37 @@ namespace C971_Reserve
         }
 
 
-        private void OnEditSwipeItemInvoked(object sender, EventArgs e)
+        private async void OnEditSwipeItemInvoked(object sender, EventArgs e)
         {
             var swipeItem = (SwipeItem)sender;
-            var term = (Term)swipeItem.CommandParameter;
+            var term = (Term)swipeItem.BindingContext;
+
+            var editTermPage = new EditTerm(_db, term);
+            await Navigation.PushAsync(editTermPage);
+            //refresh the terms list when the edit term page is closed
+            editTermPage.Disappearing += (s, args) => _viewModel.LoadTerms();
+
         }
 
         private async void OnDeleteSwipeItemInvoked(object sender, EventArgs e)
         {
             var swipeItem = (SwipeItem)sender;
             var term = (Term)swipeItem.BindingContext;
-            await _db.DeleteTermAsync(term);
-            _viewModel.Terms.Remove(term);
+
+            bool confirm = await DisplayAlert("Delete Confirmation", $"Do you want to delete the term {term.Title}?",
+                "Yes", "No");
+            if (confirm)
+            {
+                await _db.DeleteTermAsync(term);
+                _viewModel.Terms.Remove(term);
+            }
         }
 
         private async void OnAddTermButtonClicked(object sender, EventArgs e)
         {
             var addTermPage = new AddTerm(_db);
             await Navigation.PushAsync(addTermPage);
+            //refresh the terms list when the add term page is closed
             addTermPage.Disappearing += (s, args) => _viewModel.LoadTerms();
         }
 

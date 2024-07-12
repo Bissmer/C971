@@ -5,7 +5,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:C971_Reserve"
     Shell.FlyoutBehavior="Disabled"
-    Title="C971_Reserve">
+    Title="C971_Reserve"
+    NavBarIsVisible="False">
 
     <ShellContent
         ContentTemplate="{DataTemplate local:TermsManagement}"

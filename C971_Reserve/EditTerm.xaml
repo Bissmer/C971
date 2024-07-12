@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="C971_Reserve.EditTerm">
+    <VerticalStackLayout Padding="10">
+        <Label Text="Edit Term" 
+               FontSize="Large" 
+               HorizontalOptions="Center"/>
+        <Entry x:Name="TitleEntry"
+               Placeholder="Title"
+               MaxLength="200"
+               Text="{Binding Title}"
+               TextChanged="OnFieldChanged"/>
+        <DatePicker x:Name="StartDatePicker"
+                    Date="{Binding StartDate}"
+                    DateSelected="OnFieldChanged"/>
+        <DatePicker x:Name="EndDatePicker"
+                    Date="{Binding EndDate}"
+                    DateSelected="OnFieldChanged"/>
+        <Button Text="Save"
+                x:Name="SaveButton"
+                Clicked="OnSaveButtonClicked"
+                IsEnabled="False"/>
+        <Button Text="Cancel"
+                Clicked="OnCancelButtonClicked"/>
+    </VerticalStackLayout>
+</ContentPage>

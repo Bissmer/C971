@@ -6,7 +6,6 @@
     <ScrollView>
         <VerticalStackLayout>
             <!-- Header -->
-
             <Frame BackgroundColor="Transparent" Padding="0" HasShadow="False" CornerRadius="0">
                 <Grid>
                     <BoxView Color="White" HeightRequest="50"/>
@@ -26,18 +25,21 @@
                         <DataTemplate>
                             <SwipeView>
                                 <SwipeView.LeftItems>
-                                    <SwipeItems>
+                                    <SwipeItems Mode="Reveal">
                                         <SwipeItem Text="Edit" 
                                                    BackgroundColor="#F3B33C"
-                                                   Invoked="OnEditSwipeItemInvoked"/>
+                                                   Invoked="OnEditSwipeItemInvoked"
+                                                   IconImageSource="edit.png"
+                                                   />
                                     </SwipeItems>
                                 </SwipeView.LeftItems>
                                 <SwipeView.RightItems>
                                     <SwipeItems>
                                         <SwipeItem Text="Delete" 
                                                    BackgroundColor="#AF1111"
-                                                   Invoked="OnDeleteSwipeItemInvoked">
-                                        </SwipeItem>
+                                                   Invoked="OnDeleteSwipeItemInvoked"
+                                                   IconImageSource="delete.png"
+                                                   />
                                     </SwipeItems>
                                 </SwipeView.RightItems>
                                 <Grid Padding="10" BackgroundColor="LightGray" Margin="0,0,0,10" >
