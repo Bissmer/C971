@@ -17,5 +17,8 @@
     <ShellContent
         ContentTemplate="{DataTemplate local:AddTerm}"
         Route="AddTerm" />
+    <ShellContent
+        ContentTemplate="{DataTemplate local:TermCourses}"
+        Route="TermCourses" />
 
 </Shell>

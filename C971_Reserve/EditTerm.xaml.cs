@@ -25,7 +25,11 @@ public partial class EditTerm : ContentPage
         };
 
         _isInitialized = false;
-        NavigationPage.SetHasBackButton(this, false);
+        
+        TermTitleEntry.TextChanged += OnFieldChanged;
+        StartDatePicker.DateSelected += OnFieldChanged;
+        EndDatePicker.DateSelected += OnFieldChanged;
+
     }
 
     private void OnFieldChanged(object sender, EventArgs e)
@@ -35,9 +39,21 @@ public partial class EditTerm : ContentPage
         if (!_changesMade)
         {
             _changesMade = true;
-            SaveButton.IsEnabled = true;
         }
-        
+        DateValidation();
+        SaveButton.IsEnabled = _changesMade && !DateValidationLabel.IsVisible;
+    }
+
+    private void DateValidation()
+    {
+        if (StartDatePicker.Date > EndDatePicker.Date)
+        {
+            DateValidationLabel.IsVisible = true;
+        }
+        else 
+        {
+            DateValidationLabel.IsVisible = false;
+        }
     }
 
     private async void OnSaveButtonClicked(object sender, EventArgs e)

@@ -55,6 +55,15 @@ namespace C971_Reserve
             addTermPage.Disappearing += (s, args) => _viewModel.LoadTerms();
         }
 
+        private async void OnTermTapped(object sender, EventArgs e)
+        {
+            var frame = (Frame)sender;
+            var term = (Term)frame.BindingContext;
+
+            var termCoursesPage = new TermCourses(_db, term);
+            await Navigation.PushAsync(termCoursesPage);
+        }
+
     }
 
 }

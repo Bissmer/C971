@@ -16,6 +16,7 @@ namespace C971_Reserve.Services
         {
             _database = new SQLiteAsyncConnection(dbPath);
             _database.CreateTableAsync<Term>().Wait();
+            _database.CreateTableAsync<Course>().Wait();
         }
 
         public Task<List<Schemas.Term>> GetTermsAsync()
@@ -44,6 +45,28 @@ namespace C971_Reserve.Services
         public Task<int> DeleteTermAsync(Term term)
         {
             return _database.DeleteAsync(term);
+        }
+
+        public Task<List<Course>> GetCoursesAsync(int termId)
+        {
+            return _database.Table<Course>().Where(c => c.TermId == termId).ToListAsync();
+        }
+
+        public Task<int> SaveCourseAsync(Course course)
+        {
+            if(course.Id != 0)
+            {
+                return _database.UpdateAsync(course);
+            }
+            else
+            {
+                return _database.InsertAsync(course);
+            }
+        }
+
+        public Task<int> DeleteCourseAsync(Course course)
+        {
+            return _database.DeleteAsync(course);
         }
     }
 }

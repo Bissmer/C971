@@ -2,26 +2,51 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="C971_Reserve.EditTerm">
-    <VerticalStackLayout Padding="10">
+
+    <Grid Padding="10">
+
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
         <Label Text="Edit Term" 
                FontSize="Large" 
-               HorizontalOptions="Center"/>
-        <Entry x:Name="TitleEntry"
+               HorizontalOptions="Center"
+               Grid.Row="0"/>
+            <Entry x:Name="TermTitleEntry"
                Placeholder="Title"
                MaxLength="200"
                Text="{Binding Title}"
-               TextChanged="OnFieldChanged"/>
-        <DatePicker x:Name="StartDatePicker"
+               TextChanged="OnFieldChanged"
+               Grid.Row="1"/>
+            <DatePicker x:Name="StartDatePicker"
                     Date="{Binding StartDate}"
-                    DateSelected="OnFieldChanged"/>
-        <DatePicker x:Name="EndDatePicker"
+                    DateSelected="OnFieldChanged"
+                    Grid.Row="2"/>
+            <DatePicker x:Name="EndDatePicker"
                     Date="{Binding EndDate}"
-                    DateSelected="OnFieldChanged"/>
-        <Button Text="Save"
-                x:Name="SaveButton"
-                Clicked="OnSaveButtonClicked"
-                IsEnabled="False"/>
-        <Button Text="Cancel"
-                Clicked="OnCancelButtonClicked"/>
-    </VerticalStackLayout>
+                    DateSelected="OnFieldChanged"
+                    Grid.Row="3"/>
+            <Label x:Name="DateValidationLabel" 
+               TextColor="Red" 
+               IsVisible="False" 
+               Text="Start Date can't be more than End Date"
+               Grid.Row="4"/>
+        <StackLayout Orientation="Horizontal"
+                HorizontalOptions="Center"
+                Spacing="20"
+                Margin="0,30,0,0"
+                Grid.Row="5">
+            <Button Text="Cancel"
+                    Clicked="OnCancelButtonClicked"/>
+            <Button Text="Save"
+                    x:Name="SaveButton"
+                    Clicked="OnSaveButtonClicked"
+                    IsEnabled="False"/>
+        </StackLayout>
+    </Grid>
 </ContentPage>
