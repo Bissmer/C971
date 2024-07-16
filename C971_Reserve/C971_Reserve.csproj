@@ -64,6 +64,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="AddTermCourse.xaml.cs">
+	    <DependentUpon>AddTermCourse.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="TermsManagement.xaml.cs">
 	    <DependentUpon>TermsManagement.xaml</DependentUpon>
 	  </Compile>
@@ -71,6 +74,9 @@
 
 	<ItemGroup>
 	  <MauiXaml Update="AddTerm.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="AddTermCourse.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="EditTerm.xaml">

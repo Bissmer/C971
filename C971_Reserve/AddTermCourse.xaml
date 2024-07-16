@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="C971_Reserve.AddTermCourse"
+             Title="AddTermCourse">
+    <VerticalStackLayout>
+        <StackLayout Padding="10">
+            <Label Text="Course Name"/>
+                <Entry x:Name="CourseTitleEntry" Placeholder="Enter course name"/>
+            <Label Text="Start Date"/>
+                <DatePicker x:Name="StartDatePicker"/>
+            <Label Text="End Date"/>
+                <DatePicker x:Name="EndDatePicker"/>
+            <Label Text="Instructor Name"/>
+                <Entry x:Name="InstructorNameEntry" Placeholder="Enter instructor name"/>
+            <Label Text="Instructor Phone"/>
+                <Entry x:Name="InstructorPhoneEntry" Placeholder="Enter instructor phone number"/>
+            <Label Text="Instructor Email"/>
+                <Entry x:Name="InstructorEmailEntry" Placeholder="Enter instructor email"/>
+            <Label Text="Set Notifications for Start/End dates?"/>
+                <Switch x:Name="NotificationSwitch"/>
+            <Label Text="Additional Notes"/>
+                <Editor x:Name="NotesEditor" Placeholder="Enter additional notes"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="20" Padding="10">
+                <Button Text="Add" Clicked="OnAddButtonClicked"/>
+                <Button Text="Cancel" Clicked="OnCancelButtonClicked"/>
+            </StackLayout>
+
+        </StackLayout>
+    </VerticalStackLayout>
+</ContentPage>

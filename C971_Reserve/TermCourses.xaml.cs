@@ -48,6 +48,15 @@ public partial class TermCourses : ContentPage
 
     public  async void OnAddCourseButtonClicked(object sender, EventArgs e)
     {
-        throw new NotImplementedException();
+        var addCoursePage = new AddTermCourse(_db, _origTerm.Id);
+        addCoursePage.Disappearing += (s, args) => LoadCourses();
+        await Navigation.PushAsync(addCoursePage);
+        
     }
+
+    private async void OnBackButtonClicked(object sender, EventArgs e)
+    {
+        await Navigation.PopAsync();
+    }
+
 }

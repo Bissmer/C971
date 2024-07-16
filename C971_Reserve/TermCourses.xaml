@@ -55,7 +55,17 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
 
-        <Button Text="Add Course" Grid.Row="2" Clicked="OnAddCourseButtonClicked"/>
+        <StackLayout Orientation="Horizontal"
+                     HorizontalOptions="Center"
+                     Spacing="20"
+                     Margin="0,30,0,0"
+                     Grid.Row="2">
+            <Button Text="Back"
+                    Clicked="OnBackButtonClicked"/>
+            <Button Text="Add Course" 
+                    Clicked="OnAddCourseButtonClicked"/>
+        </StackLayout>
+        
        
     </Grid>
 </ContentPage>

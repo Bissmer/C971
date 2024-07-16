@@ -30,7 +30,7 @@
                                                    BackgroundColor="#F3B33C"
                                                    Invoked="OnEditSwipeItemInvoked"
                                                    IconImageSource="edit.png"
-                                                   />
+                                        />
                                     </SwipeItems>
                                 </SwipeView.LeftItems>
                                 <SwipeView.RightItems>
@@ -42,8 +42,8 @@
                                                    />
                                     </SwipeItems>
                                 </SwipeView.RightItems>
-                                <Frame CornerRadius="15" Padding="10" Margin="10" BackgroundColor="White" HasShadow="True">
-                                <Grid Padding="10" BackgroundColor="LightGray" Margin="0,0,0,10" >
+                                <Frame CornerRadius="15" Padding="0" Margin="10" BackgroundColor="White" HasShadow="True">
+                                    <Grid Padding="10" BackgroundColor="LightGray" Margin="0,0,0,0" >
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto"/>
                                         <RowDefinition Height="Auto"/>
