@@ -25,8 +25,8 @@ public partial class AddTermCourse : ContentPage
             InstructorName = InstructorNameEntry.Text,
             InstructorPhone = InstructorPhoneEntry.Text,
             InstructorEmail = InstructorEmailEntry.Text,
-            Notification = NotificationSwitch.IsToggled ? "On" : "Off",
-            AdditionalNotes = NotesEditor.Text
+            Notification = NotificationSwitch.IsToggled,
+            AdditionalNotes = AdditionalNotes.Text
             
         };
 

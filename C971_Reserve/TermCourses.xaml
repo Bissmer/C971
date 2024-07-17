@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="C971_Reserve.TermCourses"
              Title="TermCourses">
-    <Grid Padding="10">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -11,17 +11,33 @@
         </Grid.RowDefinitions>
 
         <!-- Header-->
-        <StackLayout Grid.Row="0" VerticalOptions="Center">
-            <Label 
-                x:Name="TermTitleLabel"
-                FontSize="Large"
-                HorizontalOptions="Center"/>
-            <Label 
-                x:Name ="TermDateRangeLabel" 
-                FontSize="Small"
-                HorizontalOptions="Center"/>
-        </StackLayout>
+
+        <Frame BackgroundColor="Transparent" Padding="0" HasShadow="False" CornerRadius="0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout VerticalOptions="Center">
+                    <Label 
+                        x:Name="TermTitleLabel"
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        FontAttributes="Bold"
+                        TextColor="Black"/>
+                    <Label 
+                        x:Name ="TermDateRangeLabel" 
+                        FontSize="Small"
+                        HorizontalOptions="Center"/>
+                </StackLayout>
+            </Grid>
+            
+        </Frame>
+        
         <!-- Courses view -->
+
             <CollectionView x:Name="CoursesCollectionView" Grid.Row="1">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
@@ -45,10 +61,24 @@
                         </SwipeItems>
                     </SwipeView.RightItems>
                     <Frame Padding="10" Margin="10" BackgroundColor="White" HasShadow="True">
-                        <StackLayout>
-                            <Label Text="{Binding CourseTitle}" FontAttributes="Bold"></Label>
-                            <Label Text="{Binding EndDate, StringFormat='{0:MM/dd/yyyy}'}"></Label>
-                        </StackLayout>
+                            <Grid Padding="10" BackgroundColor="LightGray" Margin="0,0,0,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0"  
+                                       Text="{Binding CourseTitle}" 
+                                       FontAttributes="Bold" 
+                                       HorizontalOptions="Center"></Label>
+                            <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="Center" Spacing="5" >
+                                <Label  Text="{Binding StartDate, StringFormat='{0:MM/dd/yyyy}'}"></Label>
+                                <Label  VerticalOptions="Center" Text="-"></Label>
+                                <Label  Text="{Binding EndDate, StringFormat='{0:MM/dd/yyyy}'}"></Label>
+                            </StackLayout>
+                        </Grid>
                     </Frame>
                     </SwipeView>
                 </DataTemplate>

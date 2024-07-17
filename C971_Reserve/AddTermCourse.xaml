@@ -20,10 +20,10 @@
             <Label Text="Set Notifications for Start/End dates?"/>
                 <Switch x:Name="NotificationSwitch"/>
             <Label Text="Additional Notes"/>
-                <Editor x:Name="NotesEditor" Placeholder="Enter additional notes"/>
+                <Editor x:Name="AdditionalNotes" Placeholder="Enter additional notes"/>
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="20" Padding="10">
-                <Button Text="Add" Clicked="OnAddButtonClicked"/>
                 <Button Text="Cancel" Clicked="OnCancelButtonClicked"/>
+                <Button Text="Add" Clicked="OnAddButtonClicked"/>
             </StackLayout>
 
         </StackLayout>

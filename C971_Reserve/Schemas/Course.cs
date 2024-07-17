@@ -20,7 +20,7 @@ namespace C971_Reserve.Schemas
         public string InstructorName { get; set; }
         public string InstructorPhone { get; set; }
         public string InstructorEmail { get; set; }
-        public string Notification { get; set; }
+        public bool Notification { get; set; }
         public string AdditionalNotes { get; set; }
     }
 }

@@ -32,6 +32,10 @@ public partial class TermCourses : ContentPage
     {
         var swipeItem = (SwipeItem)sender;
 		var course = (Course)swipeItem.BindingContext;
+
+        var editCoursePage = new EditTermCourse(_db, course);
+        await Navigation.PushAsync(editCoursePage);
+        editCoursePage.Disappearing += (s, args) => LoadCourses();
     }
 
     private async void OnDeleteCourseSwipeItemInvoked(object sender, EventArgs e)

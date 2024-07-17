@@ -42,7 +42,7 @@
                                                    />
                                     </SwipeItems>
                                 </SwipeView.RightItems>
-                                <Frame CornerRadius="15" Padding="0" Margin="10" BackgroundColor="White" HasShadow="True">
+                                <Frame CornerRadius="15" Padding="10" Margin="10" BackgroundColor="White" HasShadow="True">
                                     <Grid Padding="10" BackgroundColor="LightGray" Margin="0,0,0,0" >
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto"/>
@@ -54,14 +54,14 @@
                                     <Label Text="{Binding Title}"
                                            FontAttributes="Bold"
                                            Grid.Row="0"
-                                           HorizontalOptions="Start"/>
-                                    <Label Text="{Binding StartDate}"
-                                           Grid.Row="1"
-                                           HorizontalOptions="Start"/>
-                                    <Label Text="{Binding EndDate}"
-                                           Grid.Row="1"
-                                           HorizontalOptions="End"/>
-                                </Grid>
+                                           HorizontalOptions="Center"/>
+                                    <!-- Align dates in the swap view -->
+                                    <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="Center" Spacing="5">
+                                        <Label Text="{Binding StartDate,StringFormat='{0:MM/dd/yyyy}'}"></Label>
+                                        <Label  VerticalOptions="Center" Text="-"></Label>
+                                        <Label Text="{Binding EndDate, StringFormat='{0:MM/dd/yyyy}'}"></Label>
+                                        </StackLayout>
+                                    </Grid>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="OnTermTapped" CommandParameter="{Binding .}"/>
                                     </Frame.GestureRecognizers>
