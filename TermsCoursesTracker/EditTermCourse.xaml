@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TermsCoursesTracker.EditTermCourse"
+             Title="EditTermCourse">
+    <ScrollView>
+        <VerticalStackLayout Padding="10" Spacing="20">
+        <!--Header-->
+        <StackLayout VerticalOptions="Start">
+            <Frame BackgroundColor="Transparent" Padding="0" HasShadow="False" CornerRadius="0">
+                <Grid>
+                    <BoxView Color="White" HeightRequest="50"/>
+                    <Label Text="Edit Course"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           TextColor="Black"
+                           FontAttributes="Bold"
+                           FontSize="30"/>
+                </Grid>
+            </Frame>
+        </StackLayout>
+        
+
+        <!-- Course Elements -->
+        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Spacing="10" Margin="50">
+
+            <Label Text="Course Title" TextColor="Black" HorizontalOptions="Start"/>
+            <Frame Padding="10" CornerRadius="10" BackgroundColor="LightGray" WidthRequest="300">
+                <Entry x:Name="CourseTitleEntry" Placeholder="Course Title" PlaceholderColor="Grey" MaxLength="100" TextChanged="OnFieldChanged"/>
+            </Frame>
+            <Label x:Name="TitleValidationLabel" Text="Course Title cannot be empty" TextColor="Red" IsVisible="False" HorizontalOptions="Center"/>
+
+            <Frame Padding="10" CornerRadius="10" BackgroundColor="LightGray" WidthRequest="300">
+                <Picker x:Name="CourseStatusPicker" Title="Select Status" SelectedIndexChanged="OnFieldChanged">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>In progress</x:String>
+                            <x:String>Completed</x:String>
+                            <x:String>Dropped</x:String>
+                            <x:String>Plan to take</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </Frame>
+
+            <Label Text="Start Date" TextColor="Black" HorizontalOptions="Start"/>
+            <Frame Padding="10" CornerRadius="10" BackgroundColor="LightGray" WidthRequest="300">
+                <DatePicker x:Name="StartDatePicker" DateSelected="OnFieldChanged"/>
+            </Frame>
+
+            <Label Text="End Date" TextColor="Black" HorizontalOptions="Start"/>
+            <Frame Padding="10" CornerRadius="10" BackgroundColor="LightGray" WidthRequest="300">
+                <DatePicker x:Name="EndDatePicker" DateSelected="OnFieldChanged"/>
+            </Frame>
+            <Label x:Name="DateValidationLabel" Text="Start Date can't be more than End Date" TextColor="Red" IsVisible="False" HorizontalOptions="Center"/>
+
+            <Label Text="Instructor Name" TextColor="Black" HorizontalOptions="Start"/>
+            <Frame Padding="10" CornerRadius="10" BackgroundColor="LightGray" WidthRequest="300">
+                <Entry x:Name="InstructorNameEntry" Placeholder="Instructor Name" PlaceholderColor="Grey" MaxLength="100" TextChanged="OnFieldChanged"/>
+            </Frame>
+            <Label x:Name="InstructorNameValidationLabel" Text="Instructor Name cannot be empty" TextColor="Red" IsVisible="False" HorizontalOptions="Center"/>
+
+            <Label Text="Instructor Phone" TextColor="Black" HorizontalOptions="Start"/>
+            <Frame Padding="10" CornerRadius="10" BackgroundColor="LightGray" WidthRequest="300">
+                <Entry x:Name="InstructorPhoneEntry" Placeholder="Instructor Phone" PlaceholderColor="Grey" MaxLength="50" TextChanged="OnFieldChanged"/>
+            </Frame>
+            <Label x:Name="InstructorPhoneValidationLabel" Text="Instructor Phone is invalid" TextColor="Red" IsVisible="False" HorizontalOptions="Center"/>
+
+            <Label Text="Instructor Email" TextColor="Black" HorizontalOptions="Start"/>
+            <Frame Padding="10" CornerRadius="10" BackgroundColor="LightGray" WidthRequest="300">
+                <Entry x:Name="InstructorEmailEntry" Placeholder="Enter Instructor Email" PlaceholderColor="Grey" MaxLength="50" TextChanged="OnFieldChanged"/>
+            </Frame>
+            <Label x:Name="InstructorEmailValidationLabel" Text="Instructor Email is invalid" TextColor="Red" IsVisible="False" HorizontalOptions="Center"/>
+
+            <Label Text="Set Notifications for start/end dates?" TextColor="Black" HorizontalOptions="Start"/>
+            <Grid WidthRequest="300">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Switch x:Name="NotificationSwitch" Toggled="OnNotificationToggled" HorizontalOptions="Start" VerticalOptions="Center"/>
+                <Label x:Name="NotificationLabel" Text="Notification Enabled" TextColor="Green" IsVisible="False" HorizontalOptions="Start" VerticalOptions="Center" Grid.Column="1" Margin="10,0,0,0"/>
+            </Grid>
+
+            <Label Text="Additional Notes" TextColor="Black" HorizontalOptions="Start"/>
+            <Frame Padding="10" CornerRadius="10" BackgroundColor="LightGray" WidthRequest="300">
+                <Entry x:Name="AdditionalNotesEntry" Placeholder="Additional Notes go here" PlaceholderColor="Grey" MaxLength="200" TextChanged="OnFieldChanged"/>
+            </Frame>
+
+            <!-- Save and Cancel Buttons -->
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="20" Margin="0,30,0,0">
+                <Button Text="Cancel" Clicked="OnCancelButtonClicked"/>
+                <Button x:Name="UpdateButton" Text="Update" IsEnabled="False" Clicked="OnUpdateButtonClicked"/>
+            </StackLayout>
+
+            </StackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
