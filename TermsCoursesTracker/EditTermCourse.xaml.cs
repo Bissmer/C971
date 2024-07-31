@@ -7,8 +7,8 @@ namespace TermsCoursesTracker;
 
 public partial class EditTermCourse : ContentPage
 {
-	private ProjectDatabase _database;
-	private Course _course;
+	private readonly ProjectDatabase _database;
+	private readonly Course _course;
 	private bool _changesMade = false;
 
 	

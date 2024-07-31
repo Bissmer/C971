@@ -6,8 +6,8 @@ namespace TermsCoursesTracker;
 
 public partial class AddCourseAssessment : ContentPage
 {
-	private ProjectDatabase _database;
-	private int _courseId;
+	private readonly ProjectDatabase _database;
+	private readonly int _courseId;
 	private bool _changesMade;
 
 	public AddCourseAssessment(ProjectDatabase database, int courseId)
@@ -102,7 +102,7 @@ public partial class AddCourseAssessment : ContentPage
         OnFieldChanged(sender, e);
     }
 
-    private async void ScheduleNotification(string assessmentType, string assesmentTitle, string eventTitle, DateTime eventDate)
+    private async Task ScheduleNotification(string assessmentType, string assesmentTitle, string eventTitle, DateTime eventDate)
     {
         var formattedDate = eventDate.ToString("MM/dd/yyyy");
         int notificationId = new Random().Next(10000);

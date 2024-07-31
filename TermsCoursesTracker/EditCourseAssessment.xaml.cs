@@ -6,8 +6,8 @@ namespace TermsCoursesTracker;
 
 public partial class EditCourseAssessment : ContentPage
 {
-	private ProjectDatabase _database;
-	private Assessment _assessment;
+	private readonly ProjectDatabase _database;
+	private readonly Assessment _assessment;
 	private bool _changesMade = false;
 
 	public EditCourseAssessment(ProjectDatabase database, Assessment assessment)

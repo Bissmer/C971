@@ -6,7 +6,7 @@ namespace TermsCoursesTracker;
 public partial class EditTerm : ContentPage
 {
     private readonly ProjectDatabase _database;
-    private Term _term;
+    private readonly Term _term;
     private bool _changesMade = false;
     public EditTerm(ProjectDatabase database, Term term)
 	{
@@ -78,7 +78,7 @@ public partial class EditTerm : ContentPage
     {
         if (_changesMade)
         {
-            bool confirm = await DisplayAlert("Cancel Confirmation", $"Do you want to discard term edit?", "Yes", "No");
+            bool confirm = await DisplayAlert("Cancel Confirmation", "Do you want to discard term edit?", "Yes", "No");
             if (confirm)
             {
                 await Navigation.PopAsync();
@@ -96,7 +96,7 @@ public partial class EditTerm : ContentPage
         {
             Device.BeginInvokeOnMainThread(async () =>
             {
-                bool confirm = await DisplayAlert("Cancel Confirmation", $"Do you want to discard term edit?", "Yes",
+                bool confirm = await DisplayAlert("Cancel Confirmation", "Do you want to discard term edit?", "Yes",
                     "No");
                 if (confirm)
                 {

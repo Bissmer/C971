@@ -7,7 +7,7 @@ namespace TermsCoursesTracker;
 
 public partial class TermCourses : ContentPage
 {
-    private ProjectDatabase _database;
+    private readonly ProjectDatabase _database;
     private readonly int _termId;
     private ObservableCollection<Course> _courses;
 
@@ -24,7 +24,7 @@ public partial class TermCourses : ContentPage
 
     }
 
-    private async void LoadCourses()
+    private async Task LoadCourses()
     {
         _courses = new ObservableCollection<Course>(await _database.GetCoursesAsync(_termId));
         CoursesCollectionView.ItemsSource = _courses;

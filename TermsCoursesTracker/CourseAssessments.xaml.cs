@@ -7,8 +7,8 @@ namespace TermsCoursesTracker;
 
 public partial class CourseAssessments : ContentPage
 {
-    private ProjectDatabase _database;
-    private int _courseId;
+    private readonly ProjectDatabase _database;
+    private readonly int _courseId;
     private ObservableCollection<Assessment> _assessments;
   
     public CourseAssessments( ProjectDatabase database, Course course)
@@ -32,7 +32,7 @@ public partial class CourseAssessments : ContentPage
         }
     }
 
-    private async void LoadAssessments()
+    private async Task LoadAssessments()
     {
         var assessments = await _database.GetAssessmentsByTermAsync(_courseId);
         Assessments = new ObservableCollection<Assessment>(assessments);

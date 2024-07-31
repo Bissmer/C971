@@ -75,7 +75,7 @@ public partial class AddTerm : ContentPage
     {
         if (_changesMade)
         {
-            bool confirm = await DisplayAlert("Cancel Confirmation", $"Do you want to discard term add?", "Yes", "No");
+            bool confirm = await DisplayAlert("Cancel Confirmation", "Do you want to discard term add?", "Yes", "No");
             if (confirm)
             {
                 await Navigation.PopAsync();
@@ -97,7 +97,7 @@ public partial class AddTerm : ContentPage
         {
             Device.BeginInvokeOnMainThread(async () =>
             {
-                bool confirm = await DisplayAlert("Cancel Confirmation", $"Do you want to discard term add?", "Yes",
+                bool confirm = await DisplayAlert("Cancel Confirmation", "Do you want to discard term add?", "Yes",
                     "No");
                 if (confirm)
                 {

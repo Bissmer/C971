@@ -10,7 +10,7 @@ namespace TermsCoursesTracker.Services
 {
     public class ProjectDatabase
     {
-        private SQLiteAsyncConnection _database;
+        private readonly SQLiteAsyncConnection _database;
 
         public ProjectDatabase(string dbPath)
         {

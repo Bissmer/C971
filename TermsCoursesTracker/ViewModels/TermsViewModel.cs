@@ -34,7 +34,7 @@ namespace TermsCoursesTracker.ViewModels
             LoadTerms();
         }
 
-        public async void LoadTerms()
+        public async Task LoadTerms()
         {
             var terms = await _database.GetTermsAsync();
             Terms = new ObservableCollection<Term>(terms);

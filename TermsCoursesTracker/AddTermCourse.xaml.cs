@@ -10,7 +10,7 @@ namespace TermsCoursesTracker;
 
 public partial class AddTermCourse : ContentPage
 {
-	private ProjectDatabase _database;
+	private readonly ProjectDatabase _database;
     private readonly int _termId;
     private bool _changesMade = false;
     public AddTermCourse(ProjectDatabase database, int termId)
@@ -79,7 +79,7 @@ public partial class AddTermCourse : ContentPage
 
     }
 
-    private async void OnSaveButtonClicked(object sender, EventArgs e)
+    private async Task OnSaveButtonClicked(object sender, EventArgs e)
     {
         if(!ValidateFields())
         {
