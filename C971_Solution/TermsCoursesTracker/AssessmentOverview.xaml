@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="TermsCoursesTracker.AssessmentOverview"
+             Title="AssessmentOverview">
+    <ScrollView>
+        <VerticalStackLayout Padding="10" Spacing="20">
+            <!-- Header -->
+            <StackLayout VerticalOptions="Start">
+                <Frame BackgroundColor="Transparent" Padding="0" HasShadow="False" CornerRadius="0">
+                    <Grid>
+                        <BoxView Color="White" HeightRequest="50"/>
+                        <Label Text="{Binding AssessmentTitle}"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               TextColor="Black"
+                               FontAttributes="Bold"
+                               FontSize="30"
+                               Padding="10,0,0,0"/>
+                    </Grid>
+                </Frame>
+            </StackLayout>
+
+            <!-- Expander Section for Assessment Details -->
+            <StackLayout Margin="20">
+                <views:Expander IsExpanded="True">
+                    <views:Expander.Header>
+                        <Grid ColumnDefinitions="*, Auto">
+                            <Label Text="Assessment Details" FontAttributes="Bold" FontSize="Medium" Margin="0,0,0,20"/>
+                            <Image Source="expand_arrow.png" WidthRequest="24" HeightRequest="24" VerticalOptions="Center" Margin="50,0,0,20" >
+                                <Image.Triggers>
+                                    <DataTrigger TargetType="Image" Binding="{Binding Source={RelativeSource AncestorType={x:Type views:Expander}}, Path=IsExpanded}" Value="True">
+                                        <Setter Property="Rotation" Value="180"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Image" Binding="{Binding Source={RelativeSource AncestorType={x:Type views:Expander}}, Path=IsExpanded}" Value="False">
+                                        <Setter Property="Rotation" Value="0"/>
+                                    </DataTrigger>
+                                </Image.Triggers>
+                            </Image>
+                        </Grid>
+                    </views:Expander.Header>
+                    <views:Expander.Content>
+                        <StackLayout>
+                                <Frame BorderColor="LightGray" CornerRadius="5" Padding="10">
+                                    <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, Auto, Auto, Auto, Auto">
+                                        <Label Text="Assessment Title:" TextColor="Black" FontAttributes="Bold" Grid.Row="0" Grid.Column="0" Margin="0,0,10,0"/>
+                                        <Label Text="{Binding AssessmentTitle}" TextColor="Black" Grid.Row="0" Grid.Column="1" />
+
+                                        <Label Text="Assessment Type:" TextColor="Black" FontAttributes="Bold" Grid.Row="1" Grid.Column="0" Margin="0,0,10,0"/>
+                                        <Label Text="{Binding AssessmentType}" TextColor="Black" Grid.Row="1" Grid.Column="1" />
+
+                                        <Label Text="Start Date:" TextColor="Black" FontAttributes="Bold" Grid.Row="2" Grid.Column="0" Margin="0,0,10,0"/>
+                                        <Label Text="{Binding StartDate, StringFormat='{0:MM/dd/yyyy}'}" TextColor="Black" Grid.Row="2" Grid.Column="1" />
+
+                                        <Label Text="End Date:" TextColor="Black" FontAttributes="Bold" Grid.Row="3" Grid.Column="0" Margin="0,0,10,0"/>
+                                        <Label Text="{Binding EndDate, StringFormat='{0:MM/dd/yyyy}'}" TextColor="Black" Grid.Row="3" Grid.Column="1"/>
+
+                                        <Label Text="Notification Enabled:" FontAttributes="Bold" Grid.Row="4" Grid.Column="0" Margin="0,0,10,0" />
+                                    <Label Text="{Binding Notification, Converter={StaticResource BooleanToTextConverter}}" TextColor="Black" Grid.Row="4" Grid.Column="3" />
+                                </Grid>
+                                </Frame>
+                            </StackLayout>
+                    </views:Expander.Content>
+                </views:Expander>
+
+                <!-- Buttons -->
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="20" Margin="0,30,0,0">
+                    <Button Text="Back to Assessments List" Clicked="OnBackButtonClicked" BackgroundColor="#f75a2e"/>
+                </StackLayout>
+            </StackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TermsCoursesTracker.EditTerm"
+             Title="EditTerm">
+    <ScrollView>
+        <VerticalStackLayout Padding="10" Spacing="20">
+            <!-- Header -->
+            <StackLayout VerticalOptions="Start">
+                <Frame BackgroundColor="Transparent" Padding="0" HasShadow="False" CornerRadius="0">
+                    <Grid>
+                        <BoxView Color="White" HeightRequest="50"/>
+                        <Label Text="Edit Term"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center"
+                            TextColor="Black"
+                            FontAttributes="Bold"
+                            FontSize="30"/>
+                    </Grid>
+                </Frame>
+            </StackLayout>
+
+            <!-- Term Elements -->
+            <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Spacing="10" Margin="50" >
+                <Label Text="Term Title" TextColor="Black" HorizontalOptions="Start"/>
+                <Frame Padding="10" CornerRadius="10" BackgroundColor="LightGray" WidthRequest="300">
+                    <Entry x:Name="TermTitleEntry" Placeholder="Term Title" PlaceholderColor="Grey" MaxLength="100" TextChanged="OnFieldChanged"/>
+                </Frame>
+                <Label x:Name="TermValidationLabel" Text="Term Title Cannot be empty" TextColor="Red" IsVisible="False" HorizontalOptions="Center"/>
+
+                <Label Text="Start Date" TextColor="Black" HorizontalOptions="Start"/>
+                <Frame Padding="10" CornerRadius="10" BackgroundColor="LightGray" WidthRequest="300">
+                    <DatePicker x:Name="StartDatePicker" DateSelected="OnFieldChanged"/>
+                </Frame>
+
+                <Label Text="End Date" TextColor="Black" HorizontalOptions="Start"/>
+                <Frame Padding="10" CornerRadius="10" BackgroundColor="LightGray" WidthRequest="300">
+                    <DatePicker x:Name="EndDatePicker" DateSelected="OnFieldChanged"/>
+                </Frame>
+                <Label x:Name="DateValidationLabel" Text="Start Date can't be more than End Date" TextColor="Red" IsVisible="False" HorizontalOptions="Center"/>
+
+                <!-- Save and Cancel Buttons -->
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="20" Margin="0,30,0,0">
+                    <Button Text="Cancel" Clicked="OnCancelButtonClicked" BackgroundColor="#f75a2e"/>
+                    <Button x:Name="SaveButton" Text="Save" IsEnabled="False" Clicked="OnSaveButtonClicked"/>
+                </StackLayout>
+            </StackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

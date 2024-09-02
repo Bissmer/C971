@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TermsCoursesTracker.TermCourses"
+             Title="Term Courses">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header-->
+
+        <Frame BackgroundColor="Transparent" Padding="0" HasShadow="False" CornerRadius="0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout VerticalOptions="Center">
+                    <Label 
+                        x:Name="TermTitleLabel"
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        FontAttributes="Bold"
+                        TextColor="Black"
+                        Padding="0,5"/>
+                    <Label 
+                        x:Name ="TermDateRangeLabel" 
+                        FontSize="Small"
+                        HorizontalOptions="Center"/>
+                </StackLayout>
+            </Grid>
+
+        </Frame>
+
+        <!-- Courses view -->
+
+        <CollectionView x:Name="CoursesCollectionView" Grid.Row="1">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.LeftItems>
+                            <SwipeItems Mode="Reveal">
+                                <SwipeItem
+                                Text="Edit"
+                                BackgroundColor="#F3B33C" 
+                                Invoked="OnEditCourseSwipeItemInvoked"
+                                IconImageSource="edit.png"/>
+                            </SwipeItems>
+                        </SwipeView.LeftItems>
+                        <SwipeView.RightItems>
+                            <SwipeItems Mode="Reveal">
+                                <SwipeItem
+                                Text="Delete" 
+                                BackgroundColor="#AF1111"
+                                Invoked="OnDeleteCoursesSwipeItemInvoked"
+                                IconImageSource="delete.png"/>
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <Frame Padding="10" Margin="10" BackgroundColor="White" HasShadow="True">
+                            <Grid Padding="10" BackgroundColor="#8092ad" Margin="0,0,0,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <!--Course Title -->
+                                <StackLayout Grid.Row="0" Orientation="Horizontal" HorizontalOptions="Center" Spacing="5">
+                                    <Label Text="Course Title:" FontAttributes="Bold"></Label>
+                                    <Label Text="{Binding CourseTitle}"  LineBreakMode="WordWrap" HorizontalOptions="FillAndExpand"/>
+                                </StackLayout>
+
+                                <!--Course Data -->
+                                <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="Center" Spacing="5">
+                                    <Label Text="Course status:" FontAttributes="Bold"></Label>
+                                    <Label Text="{Binding Path=CourseStatus}" HorizontalOptions="Center"/>
+                                </StackLayout>
+                                <StackLayout Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Center" Spacing="5" >
+                                    <Label  Text="Dates:" FontAttributes="Bold"></Label>
+                                    <Label  Text="{Binding StartDate, StringFormat='{0:MM/dd/yyyy}'}"></Label>
+                                    <Label  VerticalOptions="Center" Text="-"></Label>
+                                    <Label  Text="{Binding EndDate, StringFormat='{0:MM/dd/yyyy}'}"></Label>
+                                </StackLayout>
+                            </Grid>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnCourseTapped" CommandParameter="{Binding .}"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <StackLayout Orientation="Horizontal"
+                     HorizontalOptions="Center"
+                     Spacing="20"
+                     Margin="0,30,0,0"
+                     Grid.Row="2">
+            <Button Text="Back"
+                    Clicked="OnBackButtonClicked" BackgroundColor="#f75a2e"/>
+            <Button Text="Add Course" 
+                    Clicked="OnAddCourseButtonClicked" BackgroundColor="#1c9630"/>
+        </StackLayout>
+    </Grid>
+</ContentPage>
